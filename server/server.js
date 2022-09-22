@@ -10,6 +10,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'))
 })
 
+app.get('/', (req, res) => {
+let randomNum = Math.floor(Math.random()*10);
+if(randomNum % 2 === 0) {
+    rollbar.info("random number is even")
+} else {
+    rollbar.info("random number is odd")
+} res.sendStatus(200);
+});
+
+
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
